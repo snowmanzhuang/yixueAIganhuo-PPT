@@ -175,6 +175,10 @@ Exact filenames may vary depending on the run directory and `editppt` output, bu
 - Very complex tables, dense multi-figure pages, and special charts may require local manual adjustment.
 - Plus users may be better served by generating image-only PPTX first; the complete editable reconstruction workflow is recommended for GPT Pro.
 
+## License
+
+This project uses the same non-commercial use license as v1.0. See [LICENSE](LICENSE).
+
 ## Contact
 
 <img src="docs/yixue-ai-ganhuo-wechat-qrcode.jpg" alt="Yixue AI Ganhua WeChat QR code" width="50%">

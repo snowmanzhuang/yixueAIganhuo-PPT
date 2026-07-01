@@ -175,6 +175,10 @@ output/yixueAIganhuo-PPT/<run_id>/
 - 极复杂表格、密集多图页和特殊图表可能需要人工局部微调。
 - Plus 会员可能更适合先生成图片型 PPTX；完整可编辑重建推荐 GPT Pro。
 
+## 开源协议
+
+本项目沿用 v1.0 的非商业使用许可证。详见 [LICENSE](LICENSE)。
+
 ## 联系
 
 <img src="docs/yixue-ai-ganhuo-wechat-qrcode.jpg" alt="yixue AI ganhuo QR code" width="50%">
