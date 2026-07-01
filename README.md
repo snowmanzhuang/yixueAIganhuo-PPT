@@ -177,7 +177,7 @@ output/yixueAIganhuo-PPT/<run_id>/
 
 ## 开源协议
 
-本项目沿用 v1.0 的非商业使用许可证。详见 [LICENSE](LICENSE)。
+详见 [LICENSE](LICENSE)。
 
 ## 联系
 

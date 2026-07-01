@@ -177,7 +177,7 @@ Exact filenames may vary depending on the run directory and `editppt` output, bu
 
 ## License
 
-This project uses the same non-commercial use license as v1.0. See [LICENSE](LICENSE).
+See [LICENSE](LICENSE).
 
 ## Contact
 
