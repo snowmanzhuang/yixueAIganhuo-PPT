@@ -1,0 +1,158 @@
+{
+  "html": "/Users/dr.sm/Downloads/还不错的ppt模板/output/style_selector_html/yixueAIganhuo_ppt_style_selector.html",
+  "assets": 38,
+  "styles": [
+    {
+      "index": "001",
+      "name": "通用医学汇报",
+      "note": "默认医学学术汇报风格，适合不指定特殊模板时使用。",
+      "template": "assets/001_template.jpg",
+      "example": "assets/001_example_6slides.jpg",
+      "has_template": false
+    },
+    {
+      "index": "002",
+      "name": "暖米复古论文答辩医学汇报",
+      "note": "暖米复古、论文答辩、柔和纸感。",
+      "template": "assets/002_template.jpg",
+      "example": "assets/002_example_6slides.jpg",
+      "has_template": true
+    },
+    {
+      "index": "003",
+      "name": "深蓝灰医学研究汇报",
+      "note": "深蓝灰、医学研究汇报、对比强。",
+      "template": "assets/003_template.jpg",
+      "example": "assets/003_example_6slides.jpg",
+      "has_template": true
+    },
+    {
+      "index": "004",
+      "name": "冷蓝斜切生物医学汇报",
+      "note": "冷蓝斜切、现代生物医学汇报。",
+      "template": "assets/004_template.jpg",
+      "example": "assets/004_example_6slides.jpg",
+      "has_template": true
+    },
+    {
+      "index": "005",
+      "name": "生物医学冷蓝期刊风",
+      "note": "冷蓝期刊风、清透、综述感。",
+      "template": "assets/005_template.jpg",
+      "example": "assets/005_example_6slides.jpg",
+      "has_template": true
+    },
+    {
+      "index": "006",
+      "name": "生物医学书卷风医学汇报",
+      "note": "书卷风、米色纸感、克制学术。",
+      "template": "assets/006_template.jpg",
+      "example": "assets/006_example_6slides.jpg",
+      "has_template": true
+    },
+    {
+      "index": "007",
+      "name": "生物医学手稿论文答辩",
+      "note": "手稿论文答辩、线稿与科研笔记感。",
+      "template": "assets/007_template.jpg",
+      "example": "assets/007_example_6slides.jpg",
+      "has_template": true
+    },
+    {
+      "index": "008",
+      "name": "暖陶土细胞医学学术",
+      "note": "暖陶土、细胞医学、柔和橙棕。",
+      "template": "assets/008_template.jpg",
+      "example": "assets/008_example_6slides.jpg",
+      "has_template": true
+    },
+    {
+      "index": "009",
+      "name": "深海军蓝浅蓝医学科研模板",
+      "note": "深海军蓝浅蓝、医学科研模板。",
+      "template": "assets/009_template.jpg",
+      "example": "assets/009_example_6slides.jpg",
+      "has_template": true
+    },
+    {
+      "index": "010",
+      "name": "秋叶麦田水彩医学汇报",
+      "note": "秋叶麦田水彩、自然暖金、温和汇报。",
+      "template": "assets/010_template.jpg",
+      "example": "assets/010_example_6slides.jpg",
+      "has_template": true
+    },
+    {
+      "index": "011",
+      "name": "深蓝菱形论文答辩",
+      "note": "深蓝菱形、论文答辩、几何秩序。",
+      "template": "assets/011_template.jpg",
+      "example": "assets/011_example_6slides.jpg",
+      "has_template": true
+    },
+    {
+      "index": "012",
+      "name": "秋麦水彩暖棕医学汇报",
+      "note": "秋麦水彩暖棕、自然纸感医学汇报。",
+      "template": "assets/012_template.jpg",
+      "example": "assets/012_example_6slides.jpg",
+      "has_template": true
+    },
+    {
+      "index": "013",
+      "name": "青蓝水墨医学汇报",
+      "note": "青蓝水墨、东方留白、医学汇报。",
+      "template": "assets/013_template.jpg",
+      "example": "assets/013_example_6slides.jpg",
+      "has_template": true
+    },
+    {
+      "index": "014",
+      "name": "雾感鼠尾草医疗服务",
+      "note": "雾感鼠尾草、浅绿医疗服务风。",
+      "template": "assets/014_template.jpg",
+      "example": "assets/014_example_6slides.jpg",
+      "has_template": true
+    },
+    {
+      "index": "015",
+      "name": "医养同源水墨草本医学汇报",
+      "note": "水墨草本、医养同源、中式医学。",
+      "template": "assets/015_template.jpg",
+      "example": "assets/015_example_6slides.jpg",
+      "has_template": true
+    },
+    {
+      "index": "016",
+      "name": "暖棕人文医疗品牌",
+      "note": "暖棕人文医疗品牌、杂志式排版。",
+      "template": "assets/016_template.jpg",
+      "example": "assets/016_example_6slides.jpg",
+      "has_template": true
+    },
+    {
+      "index": "017",
+      "name": "森林绿水彩临床医学",
+      "note": "森林绿水彩、临床医学、人文清新。",
+      "template": "assets/017_template.jpg",
+      "example": "assets/017_example_6slides.jpg",
+      "has_template": true
+    },
+    {
+      "index": "018",
+      "name": "黑白水墨临床研究",
+      "note": "黑白水墨、临床研究、灰阶留白。",
+      "template": "assets/018_template.jpg",
+      "example": "assets/018_example_6slides.jpg",
+      "has_template": true
+    },
+    {
+      "index": "019",
+      "name": "浅粉棕医院运营",
+      "note": "浅粉棕医院运营、数据汇报与管理风。",
+      "template": "assets/019_template.jpg",
+      "example": "assets/019_example_6slides.jpg",
+      "has_template": true
+    }
+  ]
+}

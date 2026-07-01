@@ -1,0 +1,57 @@
+{
+  "deck": {
+    "title": "RPE 三维结构与功能机制",
+    "topic": "医学学术汇报",
+    "audience": "眼科专家",
+    "purpose": "展示论文证据并形成可编辑 PPTX",
+    "total_slides": 3,
+    "narrative": "背景—方法—关键结果"
+  },
+  "slides": [
+    {
+      "slide_id": "slide01",
+      "slide_number": 1,
+      "role": "title",
+      "title": "人 RPE 细胞的三维超微结构图谱",
+      "core_message": "建立整套 PPT 的医学学术风格基准",
+      "layout": {"structure": "cover", "regions": [{"name": "title_area", "position": "left", "width_ratio": "0.55", "height_ratio": "0.7", "content_type": "text"}, {"name": "illustration_area", "position": "right", "width_ratio": "0.4", "height_ratio": "0.8", "content_type": "illustration"}]},
+      "content": {"main_points": [], "text_blocks": [], "figures_or_charts_needed": [], "scientific_illustration_needed": true, "must_be_scientifically_accurate": ["RPE apical processes", "basal infoldings", "photoreceptor outer segment adjacency"]},
+      "assets": {"required": [], "placement": []},
+      "bottom_bar": {"type": "citation", "text": "Lindell et al., IOVS 2023"},
+      "references": ["Lindell et al., IOVS 2023"],
+      "speaker_notes_zh": "这一页用于建立整套汇报的主题和视觉风格。",
+      "generation_keys": {"global": ["medical_academic_slide", "layout_geometry", "typography_and_evidence", "avoid_style"], "continuity": [], "illustration": ["scientific_illustration_style"], "asset_embedding": ["cover_no_asset"], "negative_constraints": ["avoid_fake_metadata"]},
+      "notes": "封面通常不嵌入原始论文 figure。"
+    },
+    {
+      "slide_id": "slide02",
+      "slide_number": 2,
+      "role": "background",
+      "title": "研究背景与核心问题",
+      "core_message": "二维证据不足以解释 RPE 的真实三维功能界面",
+      "layout": {"structure": "two_column", "regions": [{"name": "problem_text", "position": "left", "width_ratio": "0.48", "height_ratio": "0.75", "content_type": "text"}, {"name": "rpe_schema", "position": "right", "width_ratio": "0.48", "height_ratio": "0.75", "content_type": "illustration"}]},
+      "content": {"main_points": ["RPE 与视网膜外节相邻", "顶端突起和基底内褶构成复杂界面", "需要三维重建理解结构功能"], "text_blocks": [], "figures_or_charts_needed": [], "scientific_illustration_needed": true, "must_be_scientifically_accurate": ["RPE cell body", "apical microvilli", "basal infoldings"]},
+      "assets": {"required": [], "placement": []},
+      "bottom_bar": {"type": "scientific_question", "text": "RPE 细胞的膜表面积与细胞器组织如何支持其功能？"},
+      "references": ["Lindell et al., IOVS 2023"],
+      "speaker_notes_zh": "第二页承接封面风格，提出为什么需要三维结构证据。",
+      "generation_keys": {"global": ["medical_academic_slide", "layout_geometry", "typography_and_evidence", "avoid_style"], "continuity": ["slide2_inherit_slide1"], "illustration": ["embedded_scientific_illustration"], "asset_embedding": [], "negative_constraints": ["avoid_fake_metadata"]},
+      "notes": "必须参考 slide01。"
+    },
+    {
+      "slide_id": "slide03",
+      "slide_number": 3,
+      "role": "methods",
+      "title": "方法设计：从供体人眼到单细胞三维体积重建",
+      "core_message": "SBFSEM 与人工/CNN 分割形成可量化三维结构图谱",
+      "layout": {"structure": "flowchart", "regions": [{"name": "workflow", "position": "center", "width_ratio": "0.95", "height_ratio": "0.55", "content_type": "flowchart"}, {"name": "parameters", "position": "bottom", "width_ratio": "0.95", "height_ratio": "0.25", "content_type": "table"}]},
+      "content": {"main_points": ["供体眼固定", "SBFSEM 串行成像", "人工与 CNN 分割", "三维重建与形态测量"], "text_blocks": [], "figures_or_charts_needed": [], "scientific_illustration_needed": true, "must_be_scientifically_accurate": ["serial block-face scanning electron microscopy", "3D reconstruction"]},
+      "assets": {"required": [], "placement": []},
+      "bottom_bar": {"type": "take_home", "text": "方法重点是定量表面积、体积和拓扑关系。"},
+      "references": ["Lindell et al., IOVS 2023"],
+      "speaker_notes_zh": "第三页在前两页风格基础上进入方法流程。",
+      "generation_keys": {"global": ["medical_academic_slide", "layout_geometry", "typography_and_evidence", "avoid_style"], "continuity": ["slide3_plus_inherit_slide1_slide2"], "illustration": ["embedded_scientific_illustration"], "asset_embedding": [], "negative_constraints": ["avoid_fake_metadata"]},
+      "notes": "必须同时参考 slide01 和 slide02。"
+    }
+  ]
+}

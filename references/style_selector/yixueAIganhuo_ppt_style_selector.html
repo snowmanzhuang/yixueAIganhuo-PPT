@@ -1,0 +1,604 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>yixueAIganhuo-PPT 风格选择器</title>
+  <style>
+    :root {
+      --bg: #f4f5f2;
+      --paper: #ffffff;
+      --ink: #202427;
+      --muted: #697178;
+      --line: #dce1e5;
+      --accent: #1f5f6f;
+      --accent-2: #b9833f;
+      --soft: #eef4f5;
+      --shadow: 0 18px 42px rgba(25, 36, 43, .11);
+      --radius: 14px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: radial-gradient(circle at 12% 0%, rgba(31,95,111,.10), transparent 30rem),
+                  radial-gradient(circle at 88% 2%, rgba(185,131,63,.11), transparent 28rem),
+                  var(--bg);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+      letter-spacing: 0;
+    }
+    .page { width: min(1480px, calc(100vw - 44px)); margin: 0 auto; padding: 34px 0 70px; }
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 380px;
+      gap: 24px;
+      align-items: stretch;
+      margin-bottom: 22px;
+    }
+    .hero-main, .instruction-card {
+      background: rgba(255,255,255,.88);
+      border: 1px solid rgba(220,225,229,.9);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+    }
+    .hero-main { padding: 30px 34px; }
+    .eyebrow { color: var(--accent); font-size: 14px; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; }
+    h1 { margin: 0; font-size: clamp(32px, 4vw, 54px); line-height: 1.08; letter-spacing: 0; }
+    .hero-main p { margin: 16px 0 0; max-width: 980px; color: var(--muted); font-size: 18px; line-height: 1.7; }
+    .instruction-card { padding: 24px; border-left: 6px solid var(--accent); }
+    .instruction-card h3 { margin: 0 0 12px; font-size: 22px; }
+    .instruction-card p { margin: 8px 0; color: var(--muted); line-height: 1.65; }
+    .reply-sample {
+      display: inline-flex;
+      margin-top: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: #f7fbfb;
+      border: 1px solid #cfe0e3;
+      color: var(--accent);
+      font-weight: 800;
+    }
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: grid;
+      grid-template-columns: minmax(220px, 340px) 1fr;
+      gap: 16px;
+      align-items: center;
+      padding: 14px 0 18px;
+      background: linear-gradient(to bottom, rgba(244,245,242,.98), rgba(244,245,242,.88));
+      backdrop-filter: blur(12px);
+    }
+    .search {
+      width: 100%;
+      height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,.92);
+      padding: 0 16px;
+      font-size: 15px;
+      outline: none;
+    }
+    .search:focus { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(31,95,111,.12); }
+    .number-nav { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+    .number-nav a {
+      width: 42px; height: 34px; border-radius: 999px;
+      display: inline-flex; align-items: center; justify-content: center;
+      text-decoration: none; color: #3d464b; background: rgba(255,255,255,.86);
+      border: 1px solid var(--line); font-weight: 800; font-size: 13px;
+    }
+    .number-nav a:hover { border-color: var(--accent); color: var(--accent); }
+    .style-list { display: grid; gap: 24px; }
+    .style-card {
+      background: rgba(255,255,255,.93);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 20px;
+      scroll-margin-top: 96px;
+    }
+    .card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; margin-bottom: 18px; }
+    .style-number {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-width: 58px; height: 34px; padding: 0 14px; border-radius: 999px;
+      background: #102b35; color: #fff; font-weight: 900; letter-spacing: .06em;
+      margin-bottom: 10px;
+    }
+    .card-head h2 { margin: 0; font-size: clamp(22px, 2.2vw, 32px); line-height: 1.2; }
+    .card-head p { margin: 8px 0 0; color: var(--muted); font-size: 15px; }
+    .copy-button {
+      appearance: none; border: 0; border-radius: 999px; padding: 11px 17px;
+      background: var(--accent); color: #fff; font-weight: 850; cursor: pointer;
+      white-space: nowrap; box-shadow: 0 8px 18px rgba(31,95,111,.23);
+    }
+    .copy-button:hover { background: #174b58; }
+    .copy-button.copied { background: #2d7a55; }
+    .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .image-panel {
+      background: #fbfbfa;
+      border: 1px solid #e2e6e9;
+      border-radius: 12px;
+      padding: 12px;
+      overflow: hidden;
+    }
+    .panel-label { display: flex; justify-content: space-between; gap: 14px; align-items: baseline; margin: 2px 4px 10px; }
+    .panel-label span { font-weight: 900; font-size: 16px; }
+    .panel-label small { color: var(--muted); font-size: 13px; text-align: right; }
+    .image-panel img {
+      display: block; width: 100%; height: auto;
+      border-radius: 8px;
+      border: 1px solid #e5e9ec;
+      background: #fff;
+    }
+    .footer-note { margin-top: 30px; color: var(--muted); text-align: center; line-height: 1.7; }
+    .hidden { display: none; }
+    @media (max-width: 980px) {
+      .hero { grid-template-columns: 1fr; }
+      .toolbar { position: static; grid-template-columns: 1fr; }
+      .number-nav { justify-content: flex-start; }
+      .compare-grid { grid-template-columns: 1fr; }
+      .card-head { flex-direction: column; }
+      .copy-button { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <div class="hero-main">
+        <div class="eyebrow">yixueAIganhuo-PPT style selector</div>
+        <h1>选择 PPT 视觉风格</h1>
+        <p>这里汇总 19 种医学学术 PPT 风格。每个风格左侧为模板参考图，右侧为同一篇医学文献生成的 6 页 PPT 输出示例，用于帮助你在制作前判断视觉方向。实际制作时会按你选择的风格进入可编辑 PPT 输出流程。</p>
+      </div>
+      <aside class="instruction-card">
+        <h3>使用方式</h3>
+        <p>浏览下方风格，选择你喜欢的一种。</p>
+        <p>回到对话框中回复风格序号即可，例如：</p>
+        <span class="reply-sample">选择 013</span>
+        <p>也可以直接回复：<strong>013</strong>。</p>
+      </aside>
+    </section>
+
+    <section class="toolbar" aria-label="筛选和跳转">
+      <input class="search" id="search" type="search" placeholder="搜索序号或风格名，例如 013、水墨、深蓝、粉棕">
+      <nav class="number-nav" aria-label="风格序号跳转"><a href="#style-001">001</a><a href="#style-002">002</a><a href="#style-003">003</a><a href="#style-004">004</a><a href="#style-005">005</a><a href="#style-006">006</a><a href="#style-007">007</a><a href="#style-008">008</a><a href="#style-009">009</a><a href="#style-010">010</a><a href="#style-011">011</a><a href="#style-012">012</a><a href="#style-013">013</a><a href="#style-014">014</a><a href="#style-015">015</a><a href="#style-016">016</a><a href="#style-017">017</a><a href="#style-018">018</a><a href="#style-019">019</a></nav>
+    </section>
+
+    <section class="style-list" id="styleList">
+      
+    <article class="style-card" id="style-001" data-index="001" data-name="通用医学汇报">
+      <header class="card-head">
+        <div>
+          <div class="style-number">001</div>
+          <h2>通用医学汇报</h2>
+          <p>默认医学学术汇报风格，适合不指定特殊模板时使用。</p>
+        </div>
+        <button class="copy-button" type="button" data-style="001">复制 001</button>
+      </header>
+      <div class="compare-grid">
+        <section class="image-panel">
+          <div class="panel-label"><span>通用提示词风格</span><small>001 为通用医学学术提示词，无固定模板参考图</small></div>
+          <img src="assets/001_template.jpg" alt="001 通用医学汇报 模板图" loading="lazy">
+        </section>
+        <section class="image-panel example-panel">
+          <div class="panel-label"><span>实例图</span><small>以同一篇文献生成的 6 页 PPT 输出示例</small></div>
+          <img src="assets/001_example_6slides.jpg" alt="001 通用医学汇报 6 页 PPT 输出示例" loading="lazy">
+        </section>
+      </div>
+    </article>
+
+    <article class="style-card" id="style-002" data-index="002" data-name="暖米复古论文答辩医学汇报">
+      <header class="card-head">
+        <div>
+          <div class="style-number">002</div>
+          <h2>暖米复古论文答辩医学汇报</h2>
+          <p>暖米复古、论文答辩、柔和纸感。</p>
+        </div>
+        <button class="copy-button" type="button" data-style="002">复制 002</button>
+      </header>
+      <div class="compare-grid">
+        <section class="image-panel">
+          <div class="panel-label"><span>模板图</span><small>子文件夹中的原始模板图</small></div>
+          <img src="assets/002_template.jpg" alt="002 暖米复古论文答辩医学汇报 模板图" loading="lazy">
+        </section>
+        <section class="image-panel example-panel">
+          <div class="panel-label"><span>实例图</span><small>以同一篇文献生成的 6 页 PPT 输出示例</small></div>
+          <img src="assets/002_example_6slides.jpg" alt="002 暖米复古论文答辩医学汇报 6 页 PPT 输出示例" loading="lazy">
+        </section>
+      </div>
+    </article>
+
+    <article class="style-card" id="style-003" data-index="003" data-name="深蓝灰医学研究汇报">
+      <header class="card-head">
+        <div>
+          <div class="style-number">003</div>
+          <h2>深蓝灰医学研究汇报</h2>
+          <p>深蓝灰、医学研究汇报、对比强。</p>
+        </div>
+        <button class="copy-button" type="button" data-style="003">复制 003</button>
+      </header>
+      <div class="compare-grid">
+        <section class="image-panel">
+          <div class="panel-label"><span>模板图</span><small>子文件夹中的原始模板图</small></div>
+          <img src="assets/003_template.jpg" alt="003 深蓝灰医学研究汇报 模板图" loading="lazy">
+        </section>
+        <section class="image-panel example-panel">
+          <div class="panel-label"><span>实例图</span><small>以同一篇文献生成的 6 页 PPT 输出示例</small></div>
+          <img src="assets/003_example_6slides.jpg" alt="003 深蓝灰医学研究汇报 6 页 PPT 输出示例" loading="lazy">
+        </section>
+      </div>
+    </article>
+
+    <article class="style-card" id="style-004" data-index="004" data-name="冷蓝斜切生物医学汇报">
+      <header class="card-head">
+        <div>
+          <div class="style-number">004</div>
+          <h2>冷蓝斜切生物医学汇报</h2>
+          <p>冷蓝斜切、现代生物医学汇报。</p>
+        </div>
+        <button class="copy-button" type="button" data-style="004">复制 004</button>
+      </header>
+      <div class="compare-grid">
+        <section class="image-panel">
+          <div class="panel-label"><span>模板图</span><small>子文件夹中的原始模板图</small></div>
+          <img src="assets/004_template.jpg" alt="004 冷蓝斜切生物医学汇报 模板图" loading="lazy">
+        </section>
+        <section class="image-panel example-panel">
+          <div class="panel-label"><span>实例图</span><small>以同一篇文献生成的 6 页 PPT 输出示例</small></div>
+          <img src="assets/004_example_6slides.jpg" alt="004 冷蓝斜切生物医学汇报 6 页 PPT 输出示例" loading="lazy">
+        </section>
+      </div>
+    </article>
+
+    <article class="style-card" id="style-005" data-index="005" data-name="生物医学冷蓝期刊风">
+      <header class="card-head">
+        <div>
+          <div class="style-number">005</div>
+          <h2>生物医学冷蓝期刊风</h2>
+          <p>冷蓝期刊风、清透、综述感。</p>
+        </div>
+        <button class="copy-button" type="button" data-style="005">复制 005</button>
+      </header>
+      <div class="compare-grid">
+        <section class="image-panel">
+          <div class="panel-label"><span>模板图</span><small>子文件夹中的原始模板图</small></div>
+          <img src="assets/005_template.jpg" alt="005 生物医学冷蓝期刊风 模板图" loading="lazy">
+        </section>
+        <section class="image-panel example-panel">
+          <div class="panel-label"><span>实例图</span><small>以同一篇文献生成的 6 页 PPT 输出示例</small></div>
+          <img src="assets/005_example_6slides.jpg" alt="005 生物医学冷蓝期刊风 6 页 PPT 输出示例" loading="lazy">
+        </section>
+      </div>
+    </article>
+
+    <article class="style-card" id="style-006" data-index="006" data-name="生物医学书卷风医学汇报">
+      <header class="card-head">
+        <div>
+          <div class="style-number">006</div>
+          <h2>生物医学书卷风医学汇报</h2>
+          <p>书卷风、米色纸感、克制学术。</p>
+        </div>
+        <button class="copy-button" type="button" data-style="006">复制 006</button>
+      </header>
+      <div class="compare-grid">
+        <section class="image-panel">
+          <div class="panel-label"><span>模板图</span><small>子文件夹中的原始模板图</small></div>
+          <img src="assets/006_template.jpg" alt="006 生物医学书卷风医学汇报 模板图" loading="lazy">
+        </section>
+        <section class="image-panel example-panel">
+          <div class="panel-label"><span>实例图</span><small>以同一篇文献生成的 6 页 PPT 输出示例</small></div>
+          <img src="assets/006_example_6slides.jpg" alt="006 生物医学书卷风医学汇报 6 页 PPT 输出示例" loading="lazy">
+        </section>
+      </div>
+    </article>
+
+    <article class="style-card" id="style-007" data-index="007" data-name="生物医学手稿论文答辩">
+      <header class="card-head">
+        <div>
+          <div class="style-number">007</div>
+          <h2>生物医学手稿论文答辩</h2>
+          <p>手稿论文答辩、线稿与科研笔记感。</p>
+        </div>
+        <button class="copy-button" type="button" data-style="007">复制 007</button>
+      </header>
+      <div class="compare-grid">
+        <section class="image-panel">
+          <div class="panel-label"><span>模板图</span><small>子文件夹中的原始模板图</small></div>
+          <img src="assets/007_template.jpg" alt="007 生物医学手稿论文答辩 模板图" loading="lazy">
+        </section>
+        <section class="image-panel example-panel">
+          <div class="panel-label"><span>实例图</span><small>以同一篇文献生成的 6 页 PPT 输出示例</small></div>
+          <img src="assets/007_example_6slides.jpg" alt="007 生物医学手稿论文答辩 6 页 PPT 输出示例" loading="lazy">
+        </section>
+      </div>
+    </article>
+
+    <article class="style-card" id="style-008" data-index="008" data-name="暖陶土细胞医学学术">
+      <header class="card-head">
+        <div>
+          <div class="style-number">008</div>
+          <h2>暖陶土细胞医学学术</h2>
+          <p>暖陶土、细胞医学、柔和橙棕。</p>
+        </div>
+        <button class="copy-button" type="button" data-style="008">复制 008</button>
+      </header>
+      <div class="compare-grid">
+        <section class="image-panel">
+          <div class="panel-label"><span>模板图</span><small>子文件夹中的原始模板图</small></div>
+          <img src="assets/008_template.jpg" alt="008 暖陶土细胞医学学术 模板图" loading="lazy">
+        </section>
+        <section class="image-panel example-panel">
+          <div class="panel-label"><span>实例图</span><small>以同一篇文献生成的 6 页 PPT 输出示例</small></div>
+          <img src="assets/008_example_6slides.jpg" alt="008 暖陶土细胞医学学术 6 页 PPT 输出示例" loading="lazy">
+        </section>
+      </div>
+    </article>
+
+    <article class="style-card" id="style-009" data-index="009" data-name="深海军蓝浅蓝医学科研模板">
+      <header class="card-head">
+        <div>
+          <div class="style-number">009</div>
+          <h2>深海军蓝浅蓝医学科研模板</h2>
+          <p>深海军蓝浅蓝、医学科研模板。</p>
+        </div>
+        <button class="copy-button" type="button" data-style="009">复制 009</button>
+      </header>
+      <div class="compare-grid">
+        <section class="image-panel">
+          <div class="panel-label"><span>模板图</span><small>子文件夹中的原始模板图</small></div>
+          <img src="assets/009_template.jpg" alt="009 深海军蓝浅蓝医学科研模板 模板图" loading="lazy">
+        </section>
+        <section class="image-panel example-panel">
+          <div class="panel-label"><span>实例图</span><small>以同一篇文献生成的 6 页 PPT 输出示例</small></div>
+          <img src="assets/009_example_6slides.jpg" alt="009 深海军蓝浅蓝医学科研模板 6 页 PPT 输出示例" loading="lazy">
+        </section>
+      </div>
+    </article>
+
+    <article class="style-card" id="style-010" data-index="010" data-name="秋叶麦田水彩医学汇报">
+      <header class="card-head">
+        <div>
+          <div class="style-number">010</div>
+          <h2>秋叶麦田水彩医学汇报</h2>
+          <p>秋叶麦田水彩、自然暖金、温和汇报。</p>
+        </div>
+        <button class="copy-button" type="button" data-style="010">复制 010</button>
+      </header>
+      <div class="compare-grid">
+        <section class="image-panel">
+          <div class="panel-label"><span>模板图</span><small>子文件夹中的原始模板图</small></div>
+          <img src="assets/010_template.jpg" alt="010 秋叶麦田水彩医学汇报 模板图" loading="lazy">
+        </section>
+        <section class="image-panel example-panel">
+          <div class="panel-label"><span>实例图</span><small>以同一篇文献生成的 6 页 PPT 输出示例</small></div>
+          <img src="assets/010_example_6slides.jpg" alt="010 秋叶麦田水彩医学汇报 6 页 PPT 输出示例" loading="lazy">
+        </section>
+      </div>
+    </article>
+
+    <article class="style-card" id="style-011" data-index="011" data-name="深蓝菱形论文答辩">
+      <header class="card-head">
+        <div>
+          <div class="style-number">011</div>
+          <h2>深蓝菱形论文答辩</h2>
+          <p>深蓝菱形、论文答辩、几何秩序。</p>
+        </div>
+        <button class="copy-button" type="button" data-style="011">复制 011</button>
+      </header>
+      <div class="compare-grid">
+        <section class="image-panel">
+          <div class="panel-label"><span>模板图</span><small>子文件夹中的原始模板图</small></div>
+          <img src="assets/011_template.jpg" alt="011 深蓝菱形论文答辩 模板图" loading="lazy">
+        </section>
+        <section class="image-panel example-panel">
+          <div class="panel-label"><span>实例图</span><small>以同一篇文献生成的 6 页 PPT 输出示例</small></div>
+          <img src="assets/011_example_6slides.jpg" alt="011 深蓝菱形论文答辩 6 页 PPT 输出示例" loading="lazy">
+        </section>
+      </div>
+    </article>
+
+    <article class="style-card" id="style-012" data-index="012" data-name="秋麦水彩暖棕医学汇报">
+      <header class="card-head">
+        <div>
+          <div class="style-number">012</div>
+          <h2>秋麦水彩暖棕医学汇报</h2>
+          <p>秋麦水彩暖棕、自然纸感医学汇报。</p>
+        </div>
+        <button class="copy-button" type="button" data-style="012">复制 012</button>
+      </header>
+      <div class="compare-grid">
+        <section class="image-panel">
+          <div class="panel-label"><span>模板图</span><small>子文件夹中的原始模板图</small></div>
+          <img src="assets/012_template.jpg" alt="012 秋麦水彩暖棕医学汇报 模板图" loading="lazy">
+        </section>
+        <section class="image-panel example-panel">
+          <div class="panel-label"><span>实例图</span><small>以同一篇文献生成的 6 页 PPT 输出示例</small></div>
+          <img src="assets/012_example_6slides.jpg" alt="012 秋麦水彩暖棕医学汇报 6 页 PPT 输出示例" loading="lazy">
+        </section>
+      </div>
+    </article>
+
+    <article class="style-card" id="style-013" data-index="013" data-name="青蓝水墨医学汇报">
+      <header class="card-head">
+        <div>
+          <div class="style-number">013</div>
+          <h2>青蓝水墨医学汇报</h2>
+          <p>青蓝水墨、东方留白、医学汇报。</p>
+        </div>
+        <button class="copy-button" type="button" data-style="013">复制 013</button>
+      </header>
+      <div class="compare-grid">
+        <section class="image-panel">
+          <div class="panel-label"><span>模板图</span><small>子文件夹中的原始模板图</small></div>
+          <img src="assets/013_template.jpg" alt="013 青蓝水墨医学汇报 模板图" loading="lazy">
+        </section>
+        <section class="image-panel example-panel">
+          <div class="panel-label"><span>实例图</span><small>以同一篇文献生成的 6 页 PPT 输出示例</small></div>
+          <img src="assets/013_example_6slides.jpg" alt="013 青蓝水墨医学汇报 6 页 PPT 输出示例" loading="lazy">
+        </section>
+      </div>
+    </article>
+
+    <article class="style-card" id="style-014" data-index="014" data-name="雾感鼠尾草医疗服务">
+      <header class="card-head">
+        <div>
+          <div class="style-number">014</div>
+          <h2>雾感鼠尾草医疗服务</h2>
+          <p>雾感鼠尾草、浅绿医疗服务风。</p>
+        </div>
+        <button class="copy-button" type="button" data-style="014">复制 014</button>
+      </header>
+      <div class="compare-grid">
+        <section class="image-panel">
+          <div class="panel-label"><span>模板图</span><small>子文件夹中的原始模板图</small></div>
+          <img src="assets/014_template.jpg" alt="014 雾感鼠尾草医疗服务 模板图" loading="lazy">
+        </section>
+        <section class="image-panel example-panel">
+          <div class="panel-label"><span>实例图</span><small>以同一篇文献生成的 6 页 PPT 输出示例</small></div>
+          <img src="assets/014_example_6slides.jpg" alt="014 雾感鼠尾草医疗服务 6 页 PPT 输出示例" loading="lazy">
+        </section>
+      </div>
+    </article>
+
+    <article class="style-card" id="style-015" data-index="015" data-name="医养同源水墨草本医学汇报">
+      <header class="card-head">
+        <div>
+          <div class="style-number">015</div>
+          <h2>医养同源水墨草本医学汇报</h2>
+          <p>水墨草本、医养同源、中式医学。</p>
+        </div>
+        <button class="copy-button" type="button" data-style="015">复制 015</button>
+      </header>
+      <div class="compare-grid">
+        <section class="image-panel">
+          <div class="panel-label"><span>模板图</span><small>子文件夹中的原始模板图</small></div>
+          <img src="assets/015_template.jpg" alt="015 医养同源水墨草本医学汇报 模板图" loading="lazy">
+        </section>
+        <section class="image-panel example-panel">
+          <div class="panel-label"><span>实例图</span><small>以同一篇文献生成的 6 页 PPT 输出示例</small></div>
+          <img src="assets/015_example_6slides.jpg" alt="015 医养同源水墨草本医学汇报 6 页 PPT 输出示例" loading="lazy">
+        </section>
+      </div>
+    </article>
+
+    <article class="style-card" id="style-016" data-index="016" data-name="暖棕人文医疗品牌">
+      <header class="card-head">
+        <div>
+          <div class="style-number">016</div>
+          <h2>暖棕人文医疗品牌</h2>
+          <p>暖棕人文医疗品牌、杂志式排版。</p>
+        </div>
+        <button class="copy-button" type="button" data-style="016">复制 016</button>
+      </header>
+      <div class="compare-grid">
+        <section class="image-panel">
+          <div class="panel-label"><span>模板图</span><small>子文件夹中的原始模板图</small></div>
+          <img src="assets/016_template.jpg" alt="016 暖棕人文医疗品牌 模板图" loading="lazy">
+        </section>
+        <section class="image-panel example-panel">
+          <div class="panel-label"><span>实例图</span><small>以同一篇文献生成的 6 页 PPT 输出示例</small></div>
+          <img src="assets/016_example_6slides.jpg" alt="016 暖棕人文医疗品牌 6 页 PPT 输出示例" loading="lazy">
+        </section>
+      </div>
+    </article>
+
+    <article class="style-card" id="style-017" data-index="017" data-name="森林绿水彩临床医学">
+      <header class="card-head">
+        <div>
+          <div class="style-number">017</div>
+          <h2>森林绿水彩临床医学</h2>
+          <p>森林绿水彩、临床医学、人文清新。</p>
+        </div>
+        <button class="copy-button" type="button" data-style="017">复制 017</button>
+      </header>
+      <div class="compare-grid">
+        <section class="image-panel">
+          <div class="panel-label"><span>模板图</span><small>子文件夹中的原始模板图</small></div>
+          <img src="assets/017_template.jpg" alt="017 森林绿水彩临床医学 模板图" loading="lazy">
+        </section>
+        <section class="image-panel example-panel">
+          <div class="panel-label"><span>实例图</span><small>以同一篇文献生成的 6 页 PPT 输出示例</small></div>
+          <img src="assets/017_example_6slides.jpg" alt="017 森林绿水彩临床医学 6 页 PPT 输出示例" loading="lazy">
+        </section>
+      </div>
+    </article>
+
+    <article class="style-card" id="style-018" data-index="018" data-name="黑白水墨临床研究">
+      <header class="card-head">
+        <div>
+          <div class="style-number">018</div>
+          <h2>黑白水墨临床研究</h2>
+          <p>黑白水墨、临床研究、灰阶留白。</p>
+        </div>
+        <button class="copy-button" type="button" data-style="018">复制 018</button>
+      </header>
+      <div class="compare-grid">
+        <section class="image-panel">
+          <div class="panel-label"><span>模板图</span><small>子文件夹中的原始模板图</small></div>
+          <img src="assets/018_template.jpg" alt="018 黑白水墨临床研究 模板图" loading="lazy">
+        </section>
+        <section class="image-panel example-panel">
+          <div class="panel-label"><span>实例图</span><small>以同一篇文献生成的 6 页 PPT 输出示例</small></div>
+          <img src="assets/018_example_6slides.jpg" alt="018 黑白水墨临床研究 6 页 PPT 输出示例" loading="lazy">
+        </section>
+      </div>
+    </article>
+
+    <article class="style-card" id="style-019" data-index="019" data-name="浅粉棕医院运营">
+      <header class="card-head">
+        <div>
+          <div class="style-number">019</div>
+          <h2>浅粉棕医院运营</h2>
+          <p>浅粉棕医院运营、数据汇报与管理风。</p>
+        </div>
+        <button class="copy-button" type="button" data-style="019">复制 019</button>
+      </header>
+      <div class="compare-grid">
+        <section class="image-panel">
+          <div class="panel-label"><span>模板图</span><small>子文件夹中的原始模板图</small></div>
+          <img src="assets/019_template.jpg" alt="019 浅粉棕医院运营 模板图" loading="lazy">
+        </section>
+        <section class="image-panel example-panel">
+          <div class="panel-label"><span>实例图</span><small>以同一篇文献生成的 6 页 PPT 输出示例</small></div>
+          <img src="assets/019_example_6slides.jpg" alt="019 浅粉棕医院运营 6 页 PPT 输出示例" loading="lazy">
+        </section>
+      </div>
+    </article>
+
+    </section>
+
+    <p class="footer-note">提示：右侧实例图仅展示 6 页 PPT 的视觉效果。正式任务会根据你的主题、素材和所选风格生成完整 PPT，并进入可编辑 PPT 输出流程。</p>
+  </main>
+  <script>
+    const cards = Array.from(document.querySelectorAll('.style-card'));
+    const search = document.getElementById('search');
+    search.addEventListener('input', () => {
+      const q = search.value.trim().toLowerCase();
+      cards.forEach(card => {
+        const haystack = `${card.dataset.index} ${card.dataset.name}`.toLowerCase();
+        card.classList.toggle('hidden', q && !haystack.includes(q));
+      });
+    });
+
+    document.querySelectorAll('.copy-button').forEach(button => {
+      button.addEventListener('click', async () => {
+        const style = button.dataset.style;
+        const text = `选择 ${style}`;
+        try {
+          await navigator.clipboard.writeText(text);
+          button.textContent = '已复制 ' + style;
+          button.classList.add('copied');
+          setTimeout(() => {
+            button.textContent = '复制 ' + style;
+            button.classList.remove('copied');
+          }, 1400);
+        } catch (error) {
+          button.textContent = style;
+        }
+      });
+    });
+  </script>
+</body>
+</html>

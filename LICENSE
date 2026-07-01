@@ -1,0 +1,46 @@
+yixueAIganhuo-PPT Non-Commercial Use License
+
+Copyright (c) 2026 snowmanzhuang
+
+This license permits use of yixueAIganhuo-PPT only for personal, academic, educational, research, and other non-commercial purposes.
+
+1. Permitted uses
+
+You may use, copy, modify, and share this project for non-commercial learning, teaching, academic research, paper reading, journal clubs, classroom presentations, and personal study, provided that you keep appropriate attribution to the original project and do not remove this license.
+
+2. Prohibited commercial uses
+
+Commercial use is strictly prohibited without prior written permission from the copyright holder. Prohibited uses include, but are not limited to:
+
+- selling this project, modified versions, generated workflows, or packaged services based on this project;
+- using this project to provide paid PPT generation, paid document processing, paid consulting, paid training, paid courses, or paid agency services;
+- integrating this project into a commercial product, SaaS product, internal enterprise product, paid platform, or monetized automation workflow;
+- using this project in a company, institution, or organization for profit-oriented production work;
+- using this project to create datasets, training data, benchmarks, or model fine-tuning materials for commercial AI systems;
+- removing attribution, claiming the project as your own, or relicensing it under a commercial license.
+
+3. Third-party content and APIs
+
+This project may be used with third-party papers, PDFs, images, OCR services, image-generation APIs, fonts, models, or other services. You are responsible for ensuring that your use of those third-party materials and services complies with their licenses, terms of service, copyright restrictions, privacy rules, and applicable laws.
+
+The example article links and gallery images are provided only to demonstrate the workflow. This license does not grant rights to redistribute publisher PDFs, article figures, journal content, or any other third-party materials.
+
+4. No warranty
+
+This project is provided "as is", without warranty of any kind. The copyright holder is not liable for any damages, losses, API costs, data loss, copyright disputes, service interruptions, or other consequences arising from use of this project.
+
+5. Commercial permission
+
+For commercial licensing or written permission, contact the repository owner before use.
+
+中文说明
+
+本项目仅允许个人学习、教学、科研、论文精读、组会汇报、课程展示等非商业用途使用。
+
+严禁未经授权的任何商业用途，包括但不限于：售卖本项目或其修改版本；基于本项目提供收费 PPT 制作、收费文档处理、收费咨询、收费培训、收费课程或代做服务；将本项目集成进商业产品、SaaS、企业内部盈利性生产流程、付费平台或商业自动化系统；将本项目用于商业 AI 系统的数据集、训练数据、评测集或微调材料；移除署名、冒充原创或改用商业许可重新发布。
+
+使用本项目处理第三方论文、PDF、图片、图表、字体、模型、API 或其他服务时，你需要自行确认其版权、授权、服务条款、隐私规则和适用法律。示例中的文献链接和展示图仅用于说明工作流，并不代表你获得了重新分发出版社 PDF、论文图表、期刊内容或其他第三方材料的权利。
+
+本项目按现状提供，不作任何明示或暗示担保。因使用本项目产生的 API 费用、数据损失、版权争议、服务中断或其他后果，由使用者自行承担。
+
+如需商业使用，请先联系仓库所有者获得书面授权。

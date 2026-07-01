@@ -1,0 +1,8 @@
+# Minimal Python dependencies used by the bundled helper scripts.
+# Local PaddleOCR v5 is intentionally not listed here because PaddlePaddle /
+# PaddleOCR installation depends on OS, CPU/GPU, CUDA, and Python version.
+# See docs/setup/paddleocr.zh.md or docs/setup/paddleocr.en.md.
+
+pillow>=10.0.0
+python-pptx>=1.0.2
+requests>=2.31.0

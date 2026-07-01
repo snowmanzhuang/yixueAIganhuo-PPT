@@ -1,0 +1,71 @@
+{
+  "image_provider": {
+    "kind": "openai_compatible",
+    "base_url": "https://openrouter.ai/api/v1",
+    "api_key_env": "OPENROUTER_API_KEY",
+    "model": "openai/gpt-5.4-image-2",
+    "size": "2560x1440",
+    "openrouter_image_config": {
+      "image_size": "2K",
+      "aspect_ratio": "16:9"
+    },
+    "timeout_seconds": 600,
+    "supports_text_to_image": true,
+    "supports_image_input": true,
+    "supports_image_edit": true,
+    "max_concurrent_slide_generation": 2,
+    "max_concurrent_clean_background": null
+  },
+  "image_provider_local_cliproxyapi_alternative": {
+    "kind": "local_cliproxyapi",
+    "base_url": "http://127.0.0.1:8317/v1",
+    "api_key_env": "CLIPROXYAPI_KEY",
+    "model": "gpt-image-2",
+    "size": "2560x1440",
+    "timeout_seconds": 600,
+    "supports_text_to_image": true,
+    "supports_image_input": true,
+    "supports_image_edit": true,
+    "max_concurrent_slide_generation": 2,
+    "max_concurrent_clean_background": null
+  },
+  "image_provider_codex_builtin_alternative": {
+    "kind": "codex_builtin_image_gen",
+    "model": "codex_builtin_image_gen",
+    "size": "2560x1440",
+    "requires_agent_orchestration": true,
+    "uses_subagents": true,
+    "supports_text_to_image": true,
+    "supports_image_input": true,
+    "supports_image_edit": true,
+    "raw_outputs_are_cache_only": true,
+    "raw_archive_dir": "logs/codex_imagegen_raw",
+    "standardization_method": "proportional_resize_center_crop",
+    "max_concurrent_slide_generation": 2,
+    "max_concurrent_clean_background": null
+  },
+  "ocr_provider": {
+    "kind": "local_paddleocr_v5",
+    "python": "/path/to/paddleocr/venv/bin/python",
+    "lang": "ch",
+    "det_model": "PP-OCRv5_server_det",
+    "rec_model": "PP-OCRv5_server_rec",
+    "disable_model_source_check": false,
+    "max_concurrent_ocr": 2,
+    "returns_bounding_boxes": true,
+    "returns_confidence": true,
+    "returns_polygons": true
+  },
+  "ocr_provider_api_alternative": {
+    "kind": "paddle_ocr_v5_api",
+    "job_url": "https://paddleocr.aistudio-app.com/api/v2/ocr/jobs",
+    "api_key_env": "AISTUDIO_OCR_TOKEN",
+    "model": "PP-OCRv5",
+    "poll_interval_seconds": 5,
+    "timeout_seconds": 600,
+    "max_concurrent_ocr": 2,
+    "returns_bounding_boxes": true,
+    "returns_confidence": true,
+    "returns_polygons": true
+  }
+}

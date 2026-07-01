@@ -1,0 +1,9 @@
+{"ts":"2026-05-02T00:00:00","event":"PROGRESS_UPDATE","message":"任务规划：正在准备任务目录、素材清单、manifest 和 ppt_plan.json。"}
+{"ts":"2026-05-02T00:00:20","event":"PROGRESS_UPDATE","message":"本次并发设置：PPT 原图生图 2，OCR 2，clean background 不设额外默认上限、按 OCR 就绪即启动；图像后端为 Codex 内置 image_gen，生成结果会归档到任务目录并标准化为 2560x1440。"}
+{"ts":"2026-05-02T00:01:00","slide_id":"slide01","event":"CODEX_SUBAGENT_SPAWNED","backend":"codex_builtin_image_gen","agent_id":"019e0000-0000-0000-0000-000000000000","role":"slide","progress":"0/6","concurrency":1}
+{"ts":"2026-05-02T00:01:45","slide_id":"slide01","event":"CODEX_SUBAGENT_COMPLETED","agent_id":"019e0000-0000-0000-0000-000000000000","completed":null}
+{"ts":"2026-05-02T00:01:50","slide_id":"slide01","event":"CODEX_RAW_IMAGE_ARCHIVED","agent_id":"019e0000-0000-0000-0000-000000000000","raw_archived_path":"logs/codex_imagegen_raw/slide01_slide_agent-019e0000-0000-0000-0000-000000000000.png","source_size":[1672,941]}
+{"ts":"2026-05-02T00:01:55","slide_id":"slide01","event":"IMAGE_STANDARDIZED","final_path":"slides/slide01.png","target_size":[2560,1440],"standardization_method":"proportional_resize_center_crop"}
+{"ts":"2026-05-02T00:02:00","slide_id":"slide01","event":"IMAGE_READY","path":"slides/slide01.png","progress":"1/6"}
+{"ts":"2026-05-02T00:02:01","slide_id":"slide01","event":"OCR_STARTED","backend":"local_paddleocr_v5","concurrency":2,"progress":"0/6"}
+{"ts":"2026-05-02T00:02:03","slide_id":"slide02","event":"CODEX_SUBAGENT_SPAWNED","backend":"codex_builtin_image_gen","agent_id":"019e0000-0000-0000-0000-000000000001","role":"slide","depends_on":["slide01"],"concurrency":1}

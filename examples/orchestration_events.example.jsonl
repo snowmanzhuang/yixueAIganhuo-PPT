@@ -1,0 +1,21 @@
+{"ts":"2026-05-02T00:00:00","event":"PROGRESS_UPDATE","message":"任务规划：正在准备任务目录、素材清单、manifest 和 ppt_plan.json。"}
+{"ts":"2026-05-02T00:00:20","event":"PROGRESS_UPDATE","message":"本次并发设置：PPT 原图生图 2，OCR 2，clean background 不设额外默认上限、按 OCR 就绪即启动；可根据电脑配置或 API 能力调整。"}
+{"ts":"2026-05-02T00:00:40","event":"PROGRESS_UPDATE","message":"撰写生图提示词：共 6 页，已完成 1/6。"}
+{"ts":"2026-05-02T00:01:00","slide_id":"slide01","event":"IMAGE_GENERATING","backend":"local_cliproxyapi","model":"gpt-image-2","progress":"0/6","concurrency":1}
+{"ts":"2026-05-02T00:02:00","slide_id":"slide01","event":"IMAGE_READY","path":"slides/slide01_title.png","progress":"1/6"}
+{"ts":"2026-05-02T00:02:01","event":"PROGRESS_UPDATE","message":"通过 local_cliproxyapi 调用 gpt-image-2 生成 PPT 原图：共 6 张，已完成 1/6；当前并发 1。"}
+{"ts":"2026-05-02T00:02:02","slide_id":"slide01","event":"OCR_STARTED","backend":"local_paddleocr_v5","concurrency":2,"progress":"0/6"}
+{"ts":"2026-05-02T00:02:03","slide_id":"slide02","event":"IMAGE_GENERATING","depends_on":["slide01"],"backend":"local_cliproxyapi","model":"gpt-image-2","concurrency":1}
+{"ts":"2026-05-02T00:02:40","slide_id":"slide01","event":"OCR_READY","items":23,"progress":"1/6"}
+{"ts":"2026-05-02T00:02:41","event":"PROGRESS_UPDATE","message":"通过 local_paddleocr_v5 调用 PaddleOCR v5 处理 PPT 原图：共 6 张，已完成 1/6；当前并发 2。"}
+{"ts":"2026-05-02T00:02:50","slide_id":"slide01","event":"CLEAN_INPUTS_READY"}
+{"ts":"2026-05-02T00:02:51","slide_id":"slide01","event":"CLEAN_BACKGROUND_GENERATING","backend":"local_cliproxyapi","model":"gpt-image-2","progress":"0/6","concurrency_policy":"start_immediately_when_ocr_ready_no_default_cap"}
+{"ts":"2026-05-02T00:03:00","slide_id":"slide02","event":"IMAGE_READY","path":"slides/slide02_background.png","progress":"2/6"}
+{"ts":"2026-05-02T00:03:01","slide_id":"slide02","event":"OCR_STARTED","backend":"local_paddleocr_v5","concurrency":2}
+{"ts":"2026-05-02T00:03:02","slide_id":"slide03","event":"IMAGE_GENERATING","depends_on":["slide01","slide02"],"concurrent_batch":"slide03-slide04","concurrency":2}
+{"ts":"2026-05-02T00:03:02","slide_id":"slide04","event":"IMAGE_GENERATING","depends_on":["slide01","slide02"],"concurrent_batch":"slide03-slide04","concurrency":2}
+{"ts":"2026-05-02T00:03:40","slide_id":"slide01","event":"CLEAN_BACKGROUND_READY","path":"clean_backgrounds/slide01_clean_background.png","progress":"1/6"}
+{"ts":"2026-05-02T00:03:41","event":"PROGRESS_UPDATE","message":"通过 local_cliproxyapi 调用 gpt-image-2 生成 clean background：共 6 张，已完成 1/6；按已就绪 OCR 结果即时排队。"}
+{"ts":"2026-05-02T00:04:10","event":"AGGREGATING_IMAGE_ONLY_PPTX","requires_all_slides":"IMAGE_READY","out":"pptx/final_image_only.pptx"}
+{"ts":"2026-05-02T00:05:30","event":"AGGREGATING_EDITABLE_PPTX","requires_all_slides":"PPTX_READY_FOR_AGGREGATION","out":"pptx/final_editable.pptx","message":"正在把 OCR 识别文字作为可编辑文本框叠加到 clean background 上并组装 PPTX。"}
+{"ts":"2026-05-02T00:06:00","event":"VALIDATING_OUTPUTS","message":"验证输出：检查 slide 数、图片尺寸、OCR JSON、clean background 和 PPTX 页数。"}

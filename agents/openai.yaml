@@ -1,0 +1,4 @@
+interface:
+  display_name: "Yixue AI Ganhuo PPT"
+  short_description: "Create editable medical PPTX from source materials, or convert existing visual decks to editable PPTX"
+  default_prompt: "Use $yixueAIganhuo-PPT. First route the input as medical source material for full PPT authoring or as an existing visual deck for direct editable conversion, then produce the final editable PPTX through the single-skill workflow."

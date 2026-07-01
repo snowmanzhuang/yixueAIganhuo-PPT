@@ -1,0 +1,57 @@
+{
+  "task": {
+    "id": "medical_ppt_task",
+    "created_at": "2026-05-02T00:00:00",
+    "source_inputs": [],
+    "target_slide_count": 6,
+    "target_user_image_count": 4,
+    "pdf_inferred_figure_count": null,
+    "confirmed_by_user": true
+  },
+  "providers": {
+    "image_provider": {},
+    "ocr_provider": {}
+  },
+  "paths": {
+    "task_dir": "",
+    "assets_dir": "assets",
+    "slides_dir": "slides",
+    "pptx_dir": "pptx",
+    "ocr_dir": "ocr",
+    "clean_inputs_dir": "clean_inputs",
+    "clean_backgrounds_dir": "clean_backgrounds",
+    "codex_imagegen_raw_dir": "logs/codex_imagegen_raw",
+    "image_only_pptx_out": "pptx/final_image_only.pptx",
+    "editable_pptx_out": "pptx/final_editable.pptx"
+  },
+  "slides": [
+    {
+      "slide_id": "slide01",
+      "status": "PPTX_READY_FOR_AGGREGATION",
+      "image": "slides/slide01_title.png",
+      "ocr_json": "ocr/slide01_ocr.json",
+      "overlay": "clean_inputs/slide01_all_ocr_delete_overlay.png",
+      "binary_mask": "clean_inputs/slide01_all_ocr_delete_binary_mask.png",
+      "clean_prompt": "prompts/slide01_clean_prompt.txt",
+      "clean_background": "clean_backgrounds/slide01_clean_background.png",
+      "text_layer_ready": true,
+      "asset_aspect_ratio_preserved": true,
+      "codex_imagegen": {
+        "agent_id": "019e0000-0000-0000-0000-000000000000",
+        "raw_cache_path": "~/.codex/generated_images/019e0000-0000-0000-0000-000000000000/ig_example.png",
+        "raw_archived_path": "logs/codex_imagegen_raw/slide01_slide_agent-019e0000-0000-0000-0000-000000000000.png",
+        "final_path": "slides/slide01_title.png",
+        "source_size": [1672, 941],
+        "target_size": [2560, 1440],
+        "standardized": true,
+        "standardization_method": "proportional_resize_center_crop"
+      },
+      "qc": {
+        "image_issues_recorded": [],
+        "clean_qc": "pass",
+        "pptx_qc": "pending"
+      }
+    }
+  ],
+  "events": []
+}
