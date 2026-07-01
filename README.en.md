@@ -177,7 +177,7 @@ Exact filenames may vary depending on the run directory and `editppt` output, bu
 
 ## Contact
 
-![Yixue AI Ganhua WeChat QR code](docs/yixue-ai-ganhuo-wechat-qrcode.jpg)
+<img src="docs/yixue-ai-ganhuo-wechat-qrcode.jpg" alt="Yixue AI Ganhua WeChat QR code" width="50%">
 
 ## Acknowledgements
 

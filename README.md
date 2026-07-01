@@ -177,7 +177,7 @@ output/yixueAIganhuo-PPT/<run_id>/
 
 ## 联系
 
-![yixue AI ganhuo QR code](docs/yixue-ai-ganhuo-wechat-qrcode.jpg)
+<img src="docs/yixue-ai-ganhuo-wechat-qrcode.jpg" alt="yixue AI ganhuo QR code" width="50%">
 
 ## 致谢
 
